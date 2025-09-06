@@ -69,14 +69,13 @@ export default function Home() {
         viewport={{ once: true }}
       > 
       <a id="about" className={styles.anchor}></a>
-      <h2 className={styles.sectionTitle}>About</h2>  
+      <h2 className={styles.sectionTitle}>About Me</h2>  
         <div className={styles.aboutContent}>
           
           
           <Image src="/me-alt.jpg" alt="About Image" width={350} height={290} />
-          <p>
-            I'm a passionate developer with a flair for design, currently pursuing my Master’s at FAU.
-            I love building clean, interactive interfaces and exploring modern web technologies.
+          <p className={styles.aboutText}>
+            I’m Prathamesh Gongle, a Master’s student in Business Informatics at FAU Erlangen-Nürnberg with a strong passion for building impactful digital solutions. With a solid foundation in software development, design, and cloud technologies, I enjoy creating applications that blend technical excellence with user-focused design. Beyond academics, I actively explore creative projects, from developing portfolio websites to experimenting with design and automation. My goal is to grow as a versatile developer who bridges technology, business, and creativity to deliver meaningful solutions.
           </p>
         </div>
       </motion.section>
