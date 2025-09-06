@@ -15,7 +15,7 @@ It showcases my projects, skills, and includes a contact form with a live backen
 - Custom theming with CSS Modules  
 
 ## 🚀 Deployment
-Deployed on [Vercel](https://vercel.com).  
+Deployed on [Vercel]([https://vercel.com](https://prathameshgongle.vercel.app/)).  
 
 ## 🛠️ Setup
 1. Clone the repo  
