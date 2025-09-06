@@ -44,7 +44,7 @@ export default function Home() {
           <motion.div style={{ scale, opacity: opacityNew, position: 'absolute' }}>
             <Image
               className={styles.logo}
-              src="./me-alt.jpg"
+              src="/me-alt.jpg"
               alt="Alternate photo"
               width={180}
               height={180}
@@ -73,7 +73,7 @@ export default function Home() {
         <div className={styles.aboutContent}>
           
           
-          <Image src="./me-alt.jpg" alt="About Image" width={350} height={290} />
+          <Image src="/me-alt.jpg" alt="About Image" width={350} height={290} />
           <p>
             I'm a passionate developer with a flair for design, currently pursuing my Master’s at FAU.
             I love building clean, interactive interfaces and exploring modern web technologies.
