@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<?xml version="1.0" encoding="UTF-8"?>
+<readme>
+  <title>Prathamesh Gongle — Portfolio Website</title>
 
-## Getting Started
+  <summary>
+    This repository contains the source code for my personal portfolio website, built with Next.js, React, and Framer Motion. It showcases my projects, skills, and includes a contact form with a live backend.
+  </summary>
 
-First, run the development server:
+  <liveDemo><![CDATA[Add your Vercel link here after deployment]]></liveDemo>
 
-```bash
+  <features>
+    <feature>Dark/Light Theme Toggle (custom switch with icons)</feature>
+    <feature>Modern UI/UX with smooth animations using Framer Motion</feature>
+    <feature>Responsive Design (optimized for desktop &amp; mobile)</feature>
+    <feature>Projects Section with hover effects &amp; external links (GitHub, Behance, etc.)</feature>
+    <feature>About Section with intro &amp; background</feature>
+    <feature>Contact Form with backend (Next.js API + Resend)</feature>
+    <feature>Deployed on Vercel for fast, serverless hosting</feature>
+  </features>
+
+  <techStack>
+    <frontend>
+      <item>Next.js</item>
+      <item>React</item>
+      <item>Framer Motion</item>
+    </frontend>
+    <styling>
+      <item>CSS Modules</item>
+      <item>Custom theming</item>
+    </styling>
+    <backend>
+      <item>Next.js API Routes</item>
+    </backend>
+    <emailService>
+      <item>Resend</item>
+    </emailService>
+    <deployment>
+      <item>Vercel</item>
+    </deployment>
+  </techStack>
+
+  <preview>
+    <note>Add a screenshot or GIF of your site here once deployed.</note>
+  </preview>
+
+  <gettingStarted>
+    <step index="1" title="Clone the repo">
+      <code><![CDATA[
+git clone https://github.com/prathameshgongle/prathamesh-gongle-portfolio.git
+cd prathamesh-gongle-portfolio
+      ]]></code>
+    </step>
+    <step index="2" title="Install dependencies">
+      <code><![CDATA[
+npm install
+# or
+yarn install
+      ]]></code>
+    </step>
+    <step index="3" title="Add environment variables">
+      <instruction>Create a .env.local file in the project root with your Resend API key:</instruction>
+      <code><![CDATA[
+RESEND_API_KEY=your_resend_api_key_here
+      ]]></code>
+    </step>
+    <step index="4" title="Run locally">
+      <code><![CDATA[
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+      ]]></code>
+      <open><![CDATA[http://localhost:3000]]></open>
+    </step>
+  </gettingStarted>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  <contact>
+    <intro>Want to collaborate or have an opportunity? Reach me at:</intro>
+    <links>
+      <link type="LinkedIn"><![CDATA[https://linkedin.com/in/prathameshgongle]]></link>
+      <link type="GitHub"><![CDATA[https://github.com/prathameshgongle]]></link>
+      <link type="Email"><![CDATA[your.email@example.com]]></link>
+    </links>
+  </contact>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+  <extras>
+    <starPrompt>If you like this project, don’t forget to star the repo!</starPrompt>
+  </extras>
+</readme>
