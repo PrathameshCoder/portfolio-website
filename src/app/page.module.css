@@ -297,6 +297,11 @@ a.secondary {
   margin: 0 auto;
 }
 
+.aboutText{
+  font-weight: 100;
+  font-size: 10px;
+}
+
 .logoWrapper {
   position: relative;
   width: 180px;
