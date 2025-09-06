@@ -33,7 +33,7 @@ export default function Home() {
           <motion.div style={{ scale, opacity: opacityOld, position: 'absolute' }}>
             <Image
               className={styles.logo}
-              src="./me.jpg"
+              src="/me.jpg"
               alt="My photo"
               width={180}
               height={180}
