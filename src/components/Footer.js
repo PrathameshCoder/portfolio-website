@@ -15,7 +15,7 @@ export default function Footer() {
           <img src="/git.svg" alt="GitHub" className={styles.icon} />
         </a>
         <a
-          href="https://linkedin.com/in/your-linkedin"
+          href="https://www.linkedin.com/in/prathamesh-gongle"
           target="_blank"
           rel="noopener noreferrer"
         >
