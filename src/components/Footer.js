@@ -24,9 +24,7 @@ export default function Footer() {
 
       </div>
 
-      <div className={styles.right}>
-        © {new Date().getFullYear()} All rights reserved.
-      </div>
+      <div className={styles.right}>Proudly created by me ❤️</div>
     </footer>
   );
 }
