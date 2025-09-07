@@ -18,21 +18,27 @@
 
 .center {
   display: flex;
+  justify-content: center;    /* icons centered */
+  align-items: center;        /* vertically aligned */
   gap: 1.5rem;
-  margin: 1rem 0; /* adds spacing when stacked */
+  margin: 1rem 0;
+  flex: 1;                    /* let it expand */
 }
 
 .icon {
   width: 28px;
   height: 28px;
-  color: var(--text);
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition: transform 0.2s ease, filter 0.3s ease;
   cursor: pointer;
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg); /* black by default */
+}
+
+[data-theme='dark'] .icon {
+  filter: invert(100%); /* white in dark mode */
 }
 
 .icon:hover {
   transform: scale(1.2);
-  color: var(--accent, #ff4d4d); /* hover accent */
 }
 
 .right {
@@ -46,7 +52,6 @@
     flex-direction: column;
     text-align: center;
     gap: 1rem;
-
   }
 
   .right {
@@ -54,7 +59,9 @@
   }
 
   .left {
-    border-left: none;
-    border-bottom: 2px solid var(--text);;
+    border-right: none;
+    border-bottom: 2px solid var(--text);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
