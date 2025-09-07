@@ -51,6 +51,7 @@
   .footer {
     flex-direction: column;
     text-align: center;
+    align-items: center;
     gap: 1rem;
   }
 
@@ -59,9 +60,10 @@
   }
 
   .left {
-    border-right: none;
-    border-bottom: 2px solid var(--text);
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
+    border-right: none;
+    border-bottom: 2px solid var(--text);
+    text-align: center;
   }
 }
