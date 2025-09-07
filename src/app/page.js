@@ -73,7 +73,7 @@ export default function Home() {
         <div className={styles.aboutContent}>
           
           
-          <Image src="/me-alt.jpg" alt="About Image" width={350} height={290} />
+          <Image src="/me-new.png" alt="About Image" width={350} height={0} style={{ width: "350px", height: "auto", objectFit: "contain" }}/>
           <p className={styles.aboutText}>
             I’m Prathamesh Gongle, a Master’s student in Business Informatics at FAU Erlangen-Nürnberg with a strong passion for building impactful digital solutions. With a solid foundation in software development, design, and cloud technologies, I enjoy creating applications that blend technical excellence with user-focused design. Beyond academics, I actively explore creative projects, from developing portfolio websites to experimenting with design and automation. My goal is to grow as a versatile developer who bridges technology, business, and creativity to deliver meaningful solutions.
           </p>
