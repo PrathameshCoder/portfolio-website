@@ -169,7 +169,14 @@ export default function Home() {
     }
   }}
 >
-  <input type="text" name="website" style={{ display: "none" }} />
+  {/* Honeypot field - hidden from users */}
+  <input
+  type="text"
+  name="website"
+  tabIndex="-1"
+  autoComplete="off"
+  className={styles.honeypot}
+/>  
 
   <div className={styles.inputRow}>
     <input type="text" name="name" placeholder="Name" className={styles.input} required />

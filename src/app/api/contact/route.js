@@ -1,62 +1,73 @@
-// /src/app/api/contact/route.js
-import { NextResponse } from "next/server";
-import { z } from "zod";
-import { Resend } from "resend";
-
-// Validate incoming data
-const schema = z.object({
-  name: z.string().min(2, "Name is too short"),
-  email: z.string().email("Invalid email"),
-  message: z.string().min(10, "Message is too short"),
-  // Honeypot field (should be empty)
-  website: z.string().optional(),
-});
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// (Optional) tiny in-memory rate limit for dev
-let lastHit = 0;
+// src/app/api/contact/route.js
+import { NextResponse } from 'next/server';
 
 export async function POST(req) {
   try {
-    // Basic rate limit (2s between submissions)
-    const now = Date.now();
-    if (now - lastHit < 2000) {
-      return NextResponse.json({ ok: false, error: "Too many requests" }, { status: 429 });
-    }
-    lastHit = now;
+    const body = await req.json().catch(() => ({}));
+    const { name, email, message, website } = body || {};
 
-    const json = await req.json();
-    const parsed = schema.safeParse(json);
-    if (!parsed.success) {
+    // --- Basic validation ----------------------------------------------------
+    if (website) {
+      // Honeypot triggered -> silently pretend success
+      return NextResponse.json({ ok: true, skipped: true });
+    }
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { ok: false, error: "Invalid input", issues: parsed.error.format() },
+        { ok: false, error: 'Missing required fields.' },
         { status: 400 }
       );
     }
 
-    const { name, email, message, website } = parsed.data;
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+    const RESEND_FROM = process.env.RESEND_FROM || 'Prathamesh <onboarding@resend.dev>';
+    const RESEND_TO = process.env.RESEND_TO;
 
-    // Honeypot caught a bot -> pretend success, do nothing
-    if (website && website.trim() !== "") {
-      return NextResponse.json({ ok: true });
+    if (!RESEND_API_KEY) {
+      return NextResponse.json(
+        { ok: false, error: 'RESEND_API_KEY is not set on server.' },
+        { status: 500 }
+      );
+    }
+    if (!RESEND_TO) {
+      return NextResponse.json(
+        { ok: false, error: 'RESEND_TO is not set on server.' },
+        { status: 500 }
+      );
     }
 
-    // Send the email
-    await resend.emails.send({
-      // Dev-friendly sender (works on localhost without DNS):
-      from: "Portfolio Contact <onboarding@resend.dev>",
-      to: ["prathameshgongle.j@gmail.com"], // ← put your real inbox here
-      subject: `New message from ${name}`,
-      reply_to: email,
-      text: `From: ${name} <${email}>\n\n${message}`,
-      // You can also send HTML if you prefer
-      // html: `<p><strong>From:</strong> ${name} (${email})</p><p>${message}</p>`,
+    // --- Send email via Resend REST API -------------------------------------
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: RESEND_FROM,             // Use onboarding@resend.dev in dev
+        to: [RESEND_TO],
+        reply_to: email,               // so you can reply directly
+        subject: `New message from ${name}`,
+        text: `From: ${name} <${email}>\n\n${message}`,
+      }),
     });
 
-    return NextResponse.json({ ok: true });
+    const json = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+      // Pass through Resend's reason to help debugging
+      const reason = json?.name || json?.error || json?.message || 'Unknown error';
+      return NextResponse.json(
+        { ok: false, error: `Resend: ${reason}`, details: json },
+        { status: res.status || 500 }
+      );
+    }
+
+    return NextResponse.json({ ok: true, id: json.id || null });
   } catch (err) {
-    console.error(err);
-    return NextResponse.json({ ok: false, error: "Server error" }, { status: 500 });
+    // Last-resort error
+    return NextResponse.json(
+      { ok: false, error: err?.message || 'Server error' },
+      { status: 500 }
+    );
   }
 }
