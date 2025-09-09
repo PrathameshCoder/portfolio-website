@@ -10,8 +10,12 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: "Prathamesh Gongle's Portfolio",
-  description: "Proudly created by Prathamesh."
+  title: "Prathamesh | Portfolio",
+  description: "Proudly created by Prathamesh.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({ children }) {
