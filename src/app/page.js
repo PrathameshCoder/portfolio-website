@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from "react";
 import { useState } from "react";
+import ThemeToggle from "../components/ThemeToggle";
 
 
 export default function Home() {
@@ -190,6 +191,11 @@ export default function Home() {
 
 
     </motion.section>
+
+    {/* Floating Theme Toggle */}
+<div className={styles.floatingToggle}>
+  <ThemeToggle />
+</div>
     </div>
  
   );

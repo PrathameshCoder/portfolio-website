@@ -205,28 +205,69 @@ a.secondary {
 }
 
 .navbar {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* three equal columns */
+  column-gap: 16px;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background-color: var(--bg); /* You’ll handle this with dark/light mode later */
+  z-index: 1000;
+  background-color: var(--bg);
+}
+.navbar-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;  /* always center in remaining space */
+  flex: 2;                  /* bigger space for centering */
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  justify-self: center;
 }
 
 .navbar-logo {
   font-weight: bold;
   font-size: 1.5rem;
-}
-
-.navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
+  flex: 1;  /* takes equal space like right side */
 }
 
 .navbar-links a {
   color: inherit;
   text-decoration: none;
   font-weight: 500;
+}
+/*
+.rightControls {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  justify-self: end;
+}*/
+
+.menuWrapper {
+  display: none; /* ✅ only visible on mobile */
+  justify-self: end;
+  grid-column: 3;
+}
+
+.desktopToggle {
+  display: block;
+}
+
+.menuBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 0;
+}
+
+.menuIcon {
+  width: 28px;
+  height: 28px;
+  color: var(--text);
+  justify-self: end;
 }
 
  /*
@@ -467,6 +508,13 @@ a.secondary {
   color: var(--bg);
 }
 
+.floatingToggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1100; /* stays above content */
+}
+
 /* Mobile friendly */
 @media (max-width: 600px) {
   .inputRow {
@@ -489,4 +537,78 @@ a.secondary {
 .error {
   color: #ff4d4d; /* red */
   font-weight: 600;
+}
+
+/* Hamburger + mobile menu */
+/*.menuBtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menuIcon {
+  width: 28px;
+  height: 28px;
+  color: var(--text);
+}*/
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .navbar-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* ✅ vertical centering */
+    background: var(--bg);
+    width: 100%;
+    padding: 2rem 0;
+    gap: 1.5rem;
+    display: none;
+    z-index: 1000;
+  }
+
+  .navbar-links.show {
+    display: flex;
+  }
+
+  
+  .navbar-links.show {
+    display: flex;
+  }
+
+  .menuWrapper {
+    display: block;
+    justify-self: end;
+    grid-column: 3;
+    
+  }
+}
+
+.menuIcon{
+  display: flex;
+  align-items: center;
+  justify-self: end;
+}
+
+.desktopToggle {
+  display: none;
+}
+
+  .mobileToggle {
+    margin-top: 1rem;
+  }
+
+
+@media (max-width: 1105px){
+  .aboutSection{
+    justify-content: center;
+  }
+  .aboutContent{
+    flex-direction: column;
+    text-align: center;
+  }
 }

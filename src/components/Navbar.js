@@ -1,39 +1,40 @@
 'use client'
 
 import Link from 'next/link'
-import ThemeToggle from './ThemeToggle'
-import { SunIcon } from '@heroicons/react/24/outline'
-import { MoonIcon } from '@heroicons/react/24/solid'
-
+import { useState } from 'react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import styles from '../app/page.module.css'
 
 export default function Navbar() {
-  return (
-    <nav style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: '2rem 3rem 0.5rem 2rem',
-      backgroundColor: 'var(--bg)',
-      color: 'var(--text)'
-    }}>
-      <div style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Prathamesh.</div>
+  const [menuOpen, setMenuOpen] = useState(false)
 
-      <ul style={{
-        listStyle: 'none',
-        display: 'flex',
-        gap: '3.5rem',
-        margin: 0,
-        padding: 0,
-        marginRight: '70px',
-      }}>
-        <li><Link href="#">Home</Link></li>
-        <li><Link href="#projects">Projects</Link></li>
-        <li><Link href="#about">About</Link></li>
-        <li><Link href="#contact">Contact</Link></li>
+  return (
+    <nav className={styles.navbar}>
+      {/* Logo */}
+      <div className={styles['navbar-logo']}>Prathamesh.</div>
+
+      {/* Links */}
+      <ul className={`${styles['navbar-links']} ${menuOpen ? styles.show : ''}`}>
+        <li><Link href="#" onClick={() => setMenuOpen(false)}>Home</Link></li>
+        <li><Link href="#projects" onClick={() => setMenuOpen(false)}>Projects</Link></li>
+        <li><Link href="#about" onClick={() => setMenuOpen(false)}>About</Link></li>
+        <li><Link href="#contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
       </ul>
 
-      {/* Modern Framer-based toggle switch */}
-      <ThemeToggle />
+      {/* Hamburger button */}
+      <div className={styles.menuWrapper}>
+        <button
+          className={styles.menuBtn}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? (
+            <XMarkIcon className={styles.menuIcon} />
+          ) : (
+            <Bars3Icon className={styles.menuIcon} />
+          )}
+        </button>
+      </div>
     </nav>
   )
 }
