@@ -8,7 +8,6 @@ const RESEND_FROM    = process.env.RESEND_FROM;     // e.g. onboarding@resend.de
 const RESEND_TO      = process.env.RESEND_TO;       // your inbox
 const SENDER_NAME    = process.env.SENDER_NAME || "Portfolio Contact"; // optional
 
-const resend = new Resend(RESEND_API_KEY);
 
 // --- Helpers ---
 const bad = (msg) =>
@@ -19,6 +18,8 @@ export async function POST(req) {
     if (!RESEND_API_KEY || !RESEND_FROM || !RESEND_TO) {
       return bad("Server email configuration is missing.");
     }
+    // Created here, not at module load, so the site still builds without the env vars set.
+    const resend = new Resend(RESEND_API_KEY);
 
     const body = await req.json().catch(() => ({}));
     const { name = "", email = "", message = "", website = "" } = body;
