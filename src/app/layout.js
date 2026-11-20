@@ -13,7 +13,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000')
 
-const title = 'Prathamesh Gongle | AI, digitalisation and software'
+const title = 'Prathamesh Gongle - Portfolio'
 const description =
   "Master's student in Information Systems at FAU, based in Nuremberg. I build practical AI prototypes and lead student teams from requirements to delivery. Available as a working student."
 
