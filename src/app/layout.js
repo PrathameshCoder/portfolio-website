@@ -5,6 +5,7 @@ import Providers from '../components/v2/Providers'
 import Preloader from '../components/v2/Preloader'
 import Nav from '../components/v2/Nav'
 import SceneLayer from '../components/SceneLayer'
+import { Analytics } from '@vercel/analytics/next'
 
 // The address used for links and the preview image when the site is shared.
 // On Vercel it is filled in automatically from the production domain; set
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
         <SceneLayer />
         <Nav />
         {children}
+        <Analytics />
       </body>
     </html>
   )
